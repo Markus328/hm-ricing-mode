@@ -2,14 +2,6 @@
 
 ## Next Version
 
-- [x] basic application
-- [x] rice and unrice command
-- [x] help
-- [x] version
-- [x] centralize version
-- [x] flake
-- [x] remote module
-- [ ] initial documentation
 
 ## Backlog
 
