@@ -4,6 +4,8 @@ let
   cfg = config.programs.hm-ricing-mode;
   iniFormat = pkgs.formats.json { };
 
+ 	hm-ricing-mode = pkgs.callPackage ../package.nix { inherit pkgs lib; };
+
   mipmip = {
     name = "Pim Snel";
     email = "post@pimsnel.com";
@@ -66,5 +68,9 @@ in {
 
     in lib.mkIf cfg.enable {
       home.file."${config.home.homeDirectory}/.config/hm-ricing-mode/apps.json".source = (iniFormat.generate "hm-ricing-mode" cleanedApps);
+
+      home.packages = [
+          hm-ricing-mode
+      ];
   };
 }

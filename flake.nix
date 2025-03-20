@@ -12,49 +12,23 @@
     nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; config.allowUnfree = true; config.cudaSupport= true; overlays = [  ];  });
   in
   {
-    nixosModules = forAllSystems (system:
-    let
-      pkgs = nixpkgsFor.${system};
-    in
-    {
-      hm-ricing-mode =  import ./module/hm-ricing-mode.nix;
-    });
-
     packages = forAllSystems (system:
-    let
-      pkgs = nixpkgsFor.${system};
-    in
-    {
-      hm-ricing-mode =
-            #      let
-            #              #packageOverrides = pkgs.callPackage ./python-packages.nix { };
-            #              #python = pkgs.python312.override { inherit packageOverrides; };
-            #      in
-      pkgs.callPackage ./package/package.nix { };
-    });
+      let
+        pkgs = nixpkgsFor.${system};
+      in
+      {
+        hm-ricing-mode = pkgs.callPackage ./package/package.nix { };
+      });
 
     hm-ricing-mode = forAllSystems (system: self.packages.${system}.hm-ricing-mode);
     defaultPackage = forAllSystems (system: self.packages.${system}.hm-ricing-mode);
 
-
-    devShells = forAllSystems (system:
-    let
-      pkgs = nixpkgsFor.${system};
-    in
+    homeManagerModules.hm-ricing-mode = { pkgs, ... }:
     {
-      default =
-            #        let
-            #              #packageOverrides = pkgs.callPackage ./python-packages.nix { };
-            #              #python = pkgs.python312.override { inherit packageOverrides; };
-            #
-            #        in
-        pkgs.mkShell {
-          packages = [
-                  #            (python.withPackages (ps: with ps; [
-                  #
-                  #                ]))
-              ];
-            };
-          });
-        };
-      }
+      imports = [
+        "${self}/module/hm-ricing-mode.nix"
+      ];
+    };
+
+    };
+}
