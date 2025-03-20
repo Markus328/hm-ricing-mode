@@ -13,7 +13,7 @@
 
 ## Backlog
 
-- [ ] post in discours
+- [ ] blog-post en dan link in discours
 - [ ] PR in home manager manual.
 - [ ] generate documentation from module
 - [ ] more advanced argument parser
