@@ -4,7 +4,7 @@ let
   cfg = config.programs.hm-ricing-mode;
   iniFormat = pkgs.formats.json { };
 
- 	hm-ricing-mode = pkgs.callPackage ../package.nix { inherit pkgs lib; };
+ 	hm-ricing-mode = pkgs.callPackage ../package/package.nix { inherit pkgs lib; };
 
   mipmip = {
     name = "Pim Snel";
