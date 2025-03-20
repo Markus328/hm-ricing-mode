@@ -1,8 +1,4 @@
-{ lib
-, python3Packages
-#, python
-, ...
- }:
+{ lib , python3Packages , ... }:
 
 python3Packages.buildPythonApplication rec {
   pname = "hm-ricing-mode";
@@ -10,12 +6,16 @@ python3Packages.buildPythonApplication rec {
 
   src = ./..;
 
-  #dependencies = [(python.withPackages (ps: with ps; [
-  #]))];
+  mipmip = {
+    name = "Pim Snel";
+    email = "post@pimsnel.com";
+    github = "mipmip";
+    githubId = 658612;
+  };
 
   meta = {
     homepage = "https://github.com/mipmip/hm-ricing-mode";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ mipmip ];
+    maintainers = [ mipmip ];
   };
 }

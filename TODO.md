@@ -8,11 +8,15 @@
 - [x] version
 - [x] centralize version
 - [x] flake
-- [ ] remote module
+- [x] remote module
+- [ ] initial documentation
 
 ## Backlog
 
+- [ ] post in discours
+- [ ] PR in home manager manual.
+- [ ] generate documentation from module
 - [ ] more advanced argument parser
+- [ ] set rice mode per application directory
 - [ ] hook into home-manager if possible
-- [ ] initial documentation
 - [ ] exception handling for no config file
