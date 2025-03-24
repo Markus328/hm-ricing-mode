@@ -32,6 +32,12 @@ home-manager, the command `hmrice unrise` restores the original nix-symlinks.
 
 ## CONFIGURATION
 
+You need to enable hm-ricing-mode. Add this to your Home Manager configuration:
+
+```nix
+programs.hm-ricing-mode.enable = true;
+```
+
 Every application which you want to allow in ricing mode should be added to the `apps` option.
 
 When you have implemented the app-configuration using nix options. You should
