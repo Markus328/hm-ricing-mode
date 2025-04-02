@@ -82,6 +82,23 @@ Commands:
  version   print version
 ```
 
+## Safe home-manager switch ...
+
+When running `home-manager switch -b` in `ricing` state it creates a lot of garbage
+and wrong symlinks. Currently the best way to prevent this is to run home-manager 
+from a wrapper script. E.g...
+
+```bash
+#!/usr/bin/env bash
+
+RICING=$(hmrice status | grep RICING | wc -l)
+if [ $RICING -gt 0 ]; then
+   echo "Unrise first (hmrice unrice), then run again"
+else
+  home-manager switch --flake .\#$USER@$(hostname)
+fi
+```
+
 ## CONTRIBUTE
 
 ### Issues, Bugs, and Feature Requests
