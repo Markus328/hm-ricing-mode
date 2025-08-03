@@ -6,14 +6,14 @@ python3Packages.buildPythonApplication rec {
 
   src = ./..;
 
-  mipmip = {
-    name = "Pim Snel";
-    email = "post@pimsnel.com";
-    github = "mipmip";
-    githubId = 658612;
-  };
-
-  meta = {
+  meta = let
+    mipmip = {
+      name = "Pim Snel";
+      email = "post@pimsnel.com";
+      github = "mipmip";
+      githubId = 658612;
+    }; 
+  in {
     homepage = "https://github.com/mipmip/hm-ricing-mode";
     license = lib.licenses.mit;
     maintainers = [ mipmip ];
